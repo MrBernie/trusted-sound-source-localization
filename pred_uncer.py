@@ -11,7 +11,7 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt
 
 from copy import deepcopy
-from main_crnn import TrustedRCNN as CRNN
+from model import TrustedRCNN as CRNN
 
 def draw_overall():
     plt.figure(figsize=(16,8),dpi=300)

@@ -1,4 +1,3 @@
-from dataloader import dataset
 # Some useful configuration parameters for audio deep learning project
 
 # The default path in the container used for data storage
@@ -12,7 +11,11 @@ batch_size_test = 1
 num_workers = 8
 
 # The dataset class to use. This class must inherrite from torch.utils.data.Dataset
-# This class should be implemented in the dataloader/dataset.py file
+# This class should be implemented in the dataloader/dataset.py file, or imported otherwise.
 # dataset = dataset.myDataset()
-dataset = dataset.TSSLDataSet()
+from dataloader import dataset as ds
+dataset = ds.TSSLDataSet()
 
+# The model class to use. This class must inherrite from LightningModule
+from model import TrustedRCNN
+model = TrustedRCNN
