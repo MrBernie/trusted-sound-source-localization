@@ -19,3 +19,6 @@ dataset = ds.TSSLDataSet()
 # The model class to use. This class must inherrite from LightningModule
 from model import TrustedRCNN
 model = TrustedRCNN
+
+from data_module import DataModule
+data_module = DataModule
