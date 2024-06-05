@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  audio_deep_learning_1:
+    # should be the same name as the service
+    container_name: audio_deep_learning_1
+    # this is for GPU 
+    runtime: nvidia
+    # The name of the docker image
+    image: rdpi/dcase:latest
+
+    volumes:
+      # need to update when folder of the project needs to be mounted
+      - ../..:/workspaces:cached
+      # forwards the local docker socket to the container
+      - /var/run/docker.sock:/var/run/docker-host.sock
+    
+    # size of the ram shared by the container 
+    shm_size: 32g
+
+    # select GPU (graph card)
+    devices:
+      - /dev/nvidia0
+
+    command: sleep infinity

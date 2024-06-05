@@ -16,9 +16,11 @@ from packaging.version import Version
 from torch.functional import F
 from torch.utils.data import DataLoader
 
-from dataloader.dataset_cls import TSSLDataSet
+from dataloader.dataset import TSSLDataSet
 from model.module import PredDOA
 from model.tcrnn import CRNN
+
+import config.audio_deep_learning_config as data_cfg
 
 plt.set_cmap('cividis')
 
@@ -26,65 +28,73 @@ matplotlib.rcParams['lines.linewidth'] = 2.0
 
 sns.reset_orig()
 
-
+"""this class is for the datamodule of the model"""
 class DataModule(l.LightningDataModule):
-    def __init__(self, data_dir: str = "/TSSL/data/", batch_size: tuple = [2, 1], num_workers: int = 8):
-        super().__init__()
-        """this class is for the datamodule
-        Args:
-            data_dir (str): the path of the data
-            batch_size (list): a list of batch size for train and test [2, 2]
-            num_workers (int, optional): the value of the num_workers. Defaults to 0.
-        """
-        self.data_dir = data_dir
-        self.batch_size = batch_size
-        self.num_workers = num_workers
 
+    # Initializer
+    def __init__(self):
+        super().__init__()
+        self.data_dir = data_cfg.default_data_dir
+        self.batch_size_train = data_cfg.batch_size_train
+        self.batch_size_test = data_cfg.batch_size_test
+        self.num_workers = data_cfg.num_workers
+        self.dataset = data_cfg.dataset
+
+    # prepare data
+    # must be implemented in the subclass
     def prepare_data(self) -> None:
         return super().prepare_data()
 
+    # setup data
+    # must be implemented in the subclass
     def setup(self, stage: str):
         print(stage)
         if stage == "fit":
-            self.dataset_train = TSSLDataSet(
-                data_dir=os.path.join(self.data_dir, "train"),
-                num_data=5000,
+            self.dataset_train = self.dataset(
+                data_dir = os.path.join(self.data_dir, "train"),
+                num_data = 5000,
             )
-            self.dataset_val = TSSLDataSet(
-                data_dir=os.path.join(self.data_dir, "dev"),
-                num_data=998,
+            self.dataset_val = self.dataset(
+                data_dir = os.path.join(self.data_dir, "dev"),
+                num_data = 998,
             )
         elif stage == "test":
-            self.dataset_test = TSSLDataSet(
-                data_dir=os.path.join(self.data_dir, "test"),
-                num_data=5000
+            self.dataset_test = self.dataset(
+                data_dir = os.path.join(self.data_dir, "test"),
+                num_data = 5000
             )
 
+    # train dataloaders settings
+    # must be implemented in the subclass
     def train_dataloader(self) -> TRAIN_DATALOADERS:
         return DataLoader(
             self.dataset_train,
-            batch_size=self.batch_size[0],
-            shuffle=True,
-            num_workers=self.num_workers,
-            pin_memory=False
+            batch_size = self.batch_size_train,
+            shuffle = True,
+            num_workers = self.num_workers,
+            pin_memory = False
         )
 
+    # evaluation dataloaders settings
+    # must be implemented in the subclass
     def val_dataloader(self) -> EVAL_DATALOADERS:
         return DataLoader(
             self.dataset_val,
-            batch_size=self.batch_size[1],
-            shuffle=False,
-            num_workers=self.num_workers,
-            pin_memory=False
+            batch_size = self.batch_size_test,
+            shuffle = False,
+            num_workers = self.num_workers,
+            pin_memory = False
         )
 
+    # test dataloaders settings
+    # must be implemented in the subclass
     def test_dataloader(self) -> EVAL_DATALOADERS:
         return DataLoader(
             self.dataset_test,
-            batch_size=self.batch_size[1],
-            shuffle=False,
-            num_workers=self.num_workers,
-            pin_memory=False
+            batch_size = self.batch_size_test,
+            shuffle = False,
+            num_workers = self.num_workers,
+            pin_memory = False
         )
 
 
