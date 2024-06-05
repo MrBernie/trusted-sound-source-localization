@@ -1,5 +1,6 @@
 # contains the model class
 # the model is directly used in LighteningCLI()
+# All the training steps are defined in this file
 
 import torch
 import lightning as l
