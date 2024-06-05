@@ -40,6 +40,9 @@ The realted configurations are all saved in `config/`.
 - The `tcrnn.yaml` is used to configure the dataloader, model training & test.
 
 You can change the value of these items based on your need.
+
+Note: Do not forget to intall [gpuRIR](https://github.com/DavidDiazGuerra/gpuRIR) and [webrtcvad](https://github.com/wiseman/py-webrtcvad).
+
 ### Quick Start🚀
 - **Data Generation**
 
