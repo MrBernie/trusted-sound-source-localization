@@ -9,7 +9,7 @@ from dataloader.Dataset import Segmenting_SRPDNN
 from dataloader.Dataset import LocataDataset
 from utils.utils_predict_draw import locata_plot, pred_uncer
 
-from model import TrustedRCNN as CRNN
+from module import TrustedRCNN as CRNN
 
 def main():
     fs = 16000

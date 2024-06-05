@@ -18,7 +18,7 @@ class TSSLDataSet(Dataset):
         data_dir,
         num_data,
         return_acoustic_scene=False,
-        ):
+                 ):
         super().__init__()
         
         self.data_paths = []

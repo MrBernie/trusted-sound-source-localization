@@ -1,1 +1,5 @@
-tssl_data
+tssl_data/
+**/__pycache__/
+outputs/
+lightning_logs/
+ckpt/

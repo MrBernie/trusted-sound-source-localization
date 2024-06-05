@@ -50,17 +50,23 @@ Generate the training data:
 ```zsh
 python data_simu.py DATA_SIMU.TRAIN=True DATA_SIMU.TRAIN_NUM=10000
 ```
+```zsh
+python data_simu.py DATA_SIMU.DEV=True DATA_SIMU.DEV=10000
+```
+```zsh
+python data_simu.py DATA_SIMU.TEST=True DATA_SIMU.TEST=10000
+```
 In the same way, you can also generate the validation and test datasets by changing the `DATA_SIMU.TRAIN=True` to `DATA_SIMU.DEV=True` or `DATA_SIMU.TEST=True`.
 - **Model Training**
 ```zsh
-python main_crnn.py fit --config /workspaces/tssl/config/tcrnn.yaml
+python main_crnn.py fit --config /workspaces/audio_deep_learning_1/config/tcrnn.yaml
 ```
 The parameter for `--config` should point to your config file path.
 - **Model Evaluation**
 1) Change the `ckpt_path` in the `config/tcrnn.yaml` to the trained model weight.
 2) Use Multiple GPUs or Single GPU to test the model performance.
 ```zsh
-python main_crnn.py test --config /workspaces/tssl/config/tcrnn.yaml
+python main_crnn.py test --config /workspaces/audio_deep_learning_1/config/tcrnn.yaml
 ```
 If you want to evaluate the model using the Single GPU, you can change the value of the `devices` from `"0,1"` to `"0,"` in the `config/tcrnn.yaml`.
 

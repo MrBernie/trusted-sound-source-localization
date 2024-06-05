@@ -12,6 +12,7 @@ from lightning.pytorch.cli import LightningCLI
 from matplotlib.colors import to_rgb
 
 import audio_deep_learning_config as cfg
+from module import TrustedRCNN
 
 plt.set_cmap('cividis')
 
@@ -23,7 +24,7 @@ sns.reset_orig()
 def cli_main():
     cli = LightningCLI(
         cfg.model,
-        cfg.data_module,
+        cfg.data_m,
         seed_everything_default=1744,
         save_config_kwargs={'overwrite': True},
         # parser_kwargs={"default_config_files": ["config/default.yaml"],

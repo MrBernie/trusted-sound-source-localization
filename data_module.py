@@ -5,16 +5,22 @@ import audio_deep_learning_config as cfg
 from lightning.pytorch.utilities.types import EVAL_DATALOADERS
 from lightning.pytorch.utilities.types import TRAIN_DATALOADERS
 
+from dataloader.dataset import TSSLDataSet
+
 """this class is for the datamodule of the model"""
 class DataModule(l.LightningDataModule):
 
     # Initializer
-    def __init__(self):
+    def __init__(self, data_dir: str = cfg.default_data_dir, 
+                 batch_size_train: int = cfg.default_batch_size_train, 
+                 batch_size_test: int = cfg.default_batch_size_test, 
+                 num_workers: int = cfg.default_num_workers, 
+                 ):
         super().__init__()
-        self.data_dir = cfg.default_data_dir
-        self.batch_size_train = cfg.batch_size_train
-        self.batch_size_test = cfg.batch_size_test
-        self.num_workers = cfg.num_workers
+        self.data_dir = data_dir
+        self.batch_size_train = batch_size_train
+        self.batch_size_test = batch_size_test
+        self.num_workers = num_workers
         self.dataset = cfg.dataset
 
     # prepare data
@@ -29,16 +35,16 @@ class DataModule(l.LightningDataModule):
         if stage == "fit":
             self.dataset_train = self.dataset(
                 data_dir = os.path.join(self.data_dir, "train"),
-                num_data = 5000,
+                num_data = 500,
             )
             self.dataset_val = self.dataset(
                 data_dir = os.path.join(self.data_dir, "dev"),
-                num_data = 998,
+                num_data = 100,
             )
         elif stage == "test":
             self.dataset_test = self.dataset(
                 data_dir = os.path.join(self.data_dir, "test"),
-                num_data = 5000
+                num_data = 500
             )
 
     # train dataloaders settings

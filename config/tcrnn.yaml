@@ -1,8 +1,8 @@
 # lightning.pytorch==2.1.0
 trainer:
   accelerator: auto
-  strategy: ddp
-  devices: "0,1" # Single GPU: 0, Multi-GPU: 0,1
+  # strategy: ddp # This is strategy for multi-gpu training
+  devices: [0] # Single GPU: 0, Multi-GPU: 0,1
   num_nodes: 1
   precision: 32
   enable_checkpointing: true
@@ -36,13 +36,14 @@ trainer:
           no_color: false
           width: 200
   logger:
-    class_path: lightning.pytorch.loggers.CometLogger
-    init_args:
-      api_key: w0Npr1BzeXnixD0UOBF6onh5d
-      project_name: tssl
-      experiment_name: tcrnn_verify
-      workspace: rdpi
-      save_dir: ./comet_logs
+    # class_path: lightning.pytorch.loggers.CometLogger
+    # init_args:
+    #   api_key: w0Npr1BzeXnixD0UOBF6onh5d
+    #   project_name: tssl
+    #   experiment_name: tcrnn_verify
+    #   workspace: rdpi
+    #   save_dir: ./comet_logs
+
     # - class_path: lightning.pytorch.callbacks.EarlyStopping
     #   init_args:
     #     monitor: val_loss
@@ -96,9 +97,8 @@ model:
   device: cuda
   lamdba_peochs: 10
 data:
-  data_dir: /workspaces/tssl/data/
-  batch_size:
-  - 8
-  - 1
+  data_dir: /workspaces/audio_deep_learning_1/tssl_data/
+  batch_size_train: 8
+  batch_size_test: 1
   num_workers: 4
 ckpt_path: null # /workspaces/tssl/ckpt/pre.ckpt

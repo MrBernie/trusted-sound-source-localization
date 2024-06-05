@@ -6,15 +6,15 @@ DATA_SIMU:
     TEST_NUM: 5000
     DEV_NUM: 998
     SOU_PATH:
-        TRAIN: ./data/LibriSpeech/train-clean-100
-        TEST: ./data/LibriSpeech/test-clean
-        DEV: ./data/LibriSpeech/dev-clean
-    NOISE_PATH: ./data/NoiSig/Noise92
+        TRAIN: /workspaces/audio_deep_learning_1/tssl_data/LibriSpeech/train-clean-100
+        TEST: /workspaces/audio_deep_learning_1/tssl_data/LibriSpeech/test-clean
+        DEV: /workspaces/audio_deep_learning_1/tssl_data/LibriSpeech/dev-clean
+    NOISE_PATH: /workspaces/audio_deep_learning_1/tssl_data/NoiSig/Noise92
     EXP_PATH:
-        TRAIN: ./data/train
-        TEST: ./data/test
-        DEV: ./data/dev
-    LOCATA: ./data/LOCATA
+        TRAIN: /workspaces/audio_deep_learning_1/tssl_data/train
+        TEST: /workspaces/audio_deep_learning_1/tssl_data/test
+        DEV: /workspaces/audio_deep_learning_1/tssl_data/dev
+    LOCATA: /workspaces/audio_deep_learning_1/tssl_data/LOCATA
 BASIC_SETTING   :
     NOS: [1]
     S_STATE: mobile #MOBILE
