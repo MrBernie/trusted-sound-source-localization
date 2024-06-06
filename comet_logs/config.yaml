@@ -43,6 +43,7 @@ trainer:
       auto_histogram_weight_logging: false
       auto_histogram_gradient_logging: false
       auto_histogram_activation_logging: false
+      distributed_node_identifier: null
   callbacks:
   - class_path: lightning.pytorch.callbacks.ModelCheckpoint
     init_args:
@@ -127,8 +128,9 @@ model:
   device: cuda
   lamdba_peochs: 10
 data:
-  data_dir: /workspaces/audio_deep_learning_1/tssl_data/
+  data_dir: /workspaces/Container/TSSL/tssl_data/
   batch_size_train: 8
   batch_size_test: 1
   num_workers: 4
 ckpt_path: null
+verbose: true

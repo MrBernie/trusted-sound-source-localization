@@ -11,7 +11,7 @@ from lightning.pytorch.cli import LightningCLI
 
 from matplotlib.colors import to_rgb
 
-import TSSL.tssl_config as cfg
+import tssl_config as cfg
 from module import TrustedRCNN
 
 plt.set_cmap('cividis')
