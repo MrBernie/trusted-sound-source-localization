@@ -3,3 +3,4 @@ tssl_data/
 outputs/
 lightning_logs/
 ckpt/
+config/tcrnn.yaml
