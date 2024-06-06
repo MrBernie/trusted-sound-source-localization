@@ -1,7 +1,7 @@
 import os
 import lightning as l
 from torch.utils.data import DataLoader
-import audio_deep_learning_config as cfg
+import TSSL.tssl_config as cfg
 from lightning.pytorch.utilities.types import EVAL_DATALOADERS
 from lightning.pytorch.utilities.types import TRAIN_DATALOADERS
 
@@ -35,16 +35,16 @@ class DataModule(l.LightningDataModule):
         if stage == "fit":
             self.dataset_train = self.dataset(
                 data_dir = os.path.join(self.data_dir, "train"),
-                num_data = 500,
+                num_data = 5000,
             )
             self.dataset_val = self.dataset(
                 data_dir = os.path.join(self.data_dir, "dev"),
-                num_data = 100,
+                num_data = 998,
             )
         elif stage == "test":
             self.dataset_test = self.dataset(
                 data_dir = os.path.join(self.data_dir, "test"),
-                num_data = 500
+                num_data = 5000
             )
 
     # train dataloaders settings

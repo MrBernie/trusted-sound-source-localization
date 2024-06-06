@@ -97,7 +97,7 @@ model:
   device: cuda
   lamdba_peochs: 10
 data:
-  data_dir: /workspaces/audio_deep_learning_1/tssl_data/
+  data_dir: /workspaces/Container/TSSL/tssl_data/
   batch_size_train: 8
   batch_size_test: 1
   num_workers: 4

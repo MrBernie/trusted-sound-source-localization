@@ -11,7 +11,7 @@ from lightning.pytorch.cli import LightningCLI
 
 from matplotlib.colors import to_rgb
 
-import audio_deep_learning_config as cfg
+import TSSL.tssl_config as cfg
 from module import TrustedRCNN
 
 plt.set_cmap('cividis')

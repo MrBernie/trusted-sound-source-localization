@@ -1,7 +1,7 @@
 # Some useful configuration parameters for audio deep learning project
 
 # The default path in the container used for data storage
-default_data_dir = '/workspaces/audio_deep_learning_1/tssl_data'
+default_data_dir = '/workspaces/Container/TSSL/tssl_data'
 
 # The batch size for training and testing
 default_batch_size_train = 2
