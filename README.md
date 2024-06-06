@@ -60,14 +60,14 @@ python data_simu.py DATA_SIMU.TEST=True
 In the same way, you can also generate the validation and test datasets by changing the `DATA_SIMU.TRAIN=True` to `DATA_SIMU.DEV=True` or `DATA_SIMU.TEST=True`.
 - **Model Training**
 ```zsh
-python main.py fit --config /workspaces/Container/TSSl/config/tcrnn.yaml
+python main.py fit --config /workspaces/Container/TSSL/config/tcrnn.yaml
 ```
 The parameter for `--config` should point to your config file path.
 - **Model Evaluation**
 1) Change the `ckpt_path` in the `config/tcrnn.yaml` to the trained model weight.
 2) Use Multiple GPUs or Single GPU to test the model performance.
 ```zsh
-python main.py test --config /workspaces/Container/TSSl/config/tcrnn.yaml
+python main.py test --config /workspaces/Container/TSSL/config/tcrnn.yaml
 ```
 If you want to evaluate the model using the Single GPU, you can change the value of the `devices` from `"0,1"` to `"0,"` in the `config/tcrnn.yaml`.
 
