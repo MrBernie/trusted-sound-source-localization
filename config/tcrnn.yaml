@@ -38,10 +38,10 @@ trainer:
   logger:
     class_path: lightning.pytorch.loggers.CometLogger
     init_args:
-      api_key: FItcqtFxcX4Trzy5wPfDSiC49
+      api_key: 
       project_name: tssl
       experiment_name: tcrnn_verify
-      workspace: audio_deep_learning_1
+      workspace: mrbernie
       save_dir: ./comet_logs
 
     # - class_path: lightning.pytorch.callbacks.EarlyStopping
