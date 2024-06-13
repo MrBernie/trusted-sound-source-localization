@@ -38,7 +38,7 @@ trainer:
   logger:
     class_path: lightning.pytorch.loggers.CometLogger
     init_args:
-      api_key:
+      api_key: FItcqtFxcX4Trzy5wPfDSiC49
       project_name: tssl
       experiment_name: tcrnn_verify
       workspace: mrbernie
