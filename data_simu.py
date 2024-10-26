@@ -31,7 +31,8 @@ def main(cfg: DictConfig) -> None:
     FS = 16000
     T = 4.79 # Trajectory length (s) 
     TRAJ_POINTS = 50 # number of RIRs per trajectory
-    ARRAY_SETUP = at_dataset.dualch_array_setup # the settings of the microphone arrays            
+    ARRAY_SETUP = at_dataset.hexa_array_setup # the settings of the microphone arrays
+    # ARRAY_SETUP = at_dataset.dualch_array_setup # the settings of the microphone arrays            
 
     # SOURCE SIGNAL
     sourceDataset = at_dataset.LibriSpeechDataset(

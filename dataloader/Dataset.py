@@ -117,6 +117,19 @@ dicit_array_setup = ArraySetup(arrayType='planar',
     mic_pattern = 'omni'
 )
 
+hexa_array_setup = ArraySetup(arrayType='planar',
+	orV = np.array([0.0, 1.0, 0.0]),
+	mic_scale = Parameter(1),
+	mic_pos = np.array((( 0.04, 0.00, 0.00),
+						( 0.02, 0.03464, 0.00),
+						( 0.02, -0.03464, 0.00),
+						(-0.02, 0.03464, 0.00),
+						(-0.02, -0.03464, 0.00),
+						(-0.04, 0.00, 0.00),)),
+	mic_orV = None,
+	mic_pattern = 'omni'
+)
+
 class AcousticScene:
 	""" Acoustic scene class.
 	"""
