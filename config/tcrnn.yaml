@@ -2,7 +2,8 @@
 trainer:
   accelerator: auto
   strategy: ddp
-  devices: "0,1" # Single GPU: 0, Multi-GPU: 0,1
+  # devices: "0,1" # Single GPU: 0, Multi-GPU: 0,1
+  devices: "0,"
   num_nodes: 1
   precision: 32
   enable_checkpointing: true
@@ -38,10 +39,10 @@ trainer:
   logger:
     class_path: lightning.pytorch.loggers.CometLogger
     init_args:
-      api_key: 
-      project_name: tssl
+      api_key: FItcqtFxcX4Trzy5wPfDSiC49
+      project_name: tssl-oct
       experiment_name: tcrnn_verify
-      workspace: rdpi
+      workspace: mrbernie
       save_dir: ./comet_logs
     # - class_path: lightning.pytorch.callbacks.EarlyStopping
     #   init_args:
@@ -96,9 +97,9 @@ model:
   device: cuda
   lamdba_peochs: 10
 data:
-  data_dir: /workspaces/tssl/data/
+  data_dir: /root/workspace/trusted-sound-source-localization/data
   batch_size:
   - 8
   - 1
-  num_workers: 4
-ckpt_path: null # /workspaces/tssl/ckpt/pre.ckpt
+  num_workers: 2
+ckpt_path: /root/workspace/trusted-sound-source-localization/ckpt-Oct-20/last.ckpt
