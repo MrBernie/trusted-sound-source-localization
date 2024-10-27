@@ -82,7 +82,7 @@ trainer:
   reload_dataloaders_every_n_epochs: 0
   default_root_dir: null
 model:
-  input_dim: 4
+  input_dim: 12
   num_classes: 180
   hidden_dim: 64
   lr: 0.0001
@@ -102,4 +102,4 @@ data:
   - 8
   - 1
   num_workers: 2
-ckpt_path: /root/workspace/trusted-sound-source-localization/ckpt-Oct-20/last.ckpt
+# ckpt_path: /root/workspace/trusted-sound-source-localization/ckpt-Oct-20/last.ckpt
